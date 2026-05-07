@@ -55,14 +55,18 @@ export async function deleteRoutine(token, routineId) {
 // ----------------------
 // ADD set to routine (requires token)
 // ----------------------
-export async function addSetToRoutine(token, routineId, { activityId, count }) {
+export async function addSetToRoutine(token, routineId, { activityId, count, duration }) {
   const response = await fetch(`${BASE_URL}/routines/${routineId}/activities`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ activityId, count }),
+    body: JSON.stringify({
+      activityId,
+      count,
+      duration, // REQUIRED by API
+    }),
   });
 
   const result = await response.json();

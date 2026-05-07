@@ -9,6 +9,7 @@ export default function AddSetForm({ routineId, onSetAdded }) {
   const [activities, setActivities] = useState([]);
   const [activityId, setActivityId] = useState("");
   const [count, setCount] = useState("");
+  const [duration, setDuration] = useState("");
   const [error, setError] = useState("");
 
   async function loadActivities() {
@@ -32,10 +33,14 @@ export default function AddSetForm({ routineId, onSetAdded }) {
       await addSetToRoutine(token, routineId, {
         activityId: Number(activityId),
         count: Number(count),
+        duration: Number(duration),
       });
 
+      // reset form
       setActivityId("");
       setCount("");
+      setDuration("");
+
       onSetAdded(); // refresh routine details
     } catch (err) {
       setError(err.message);
@@ -75,7 +80,19 @@ export default function AddSetForm({ routineId, onSetAdded }) {
         />
       </label>
 
+      <label>
+        Duration:
+        <input
+          type="number"
+          min="1"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+          required
+        />
+      </label>
+
       <button type="submit">Add Set</button>
     </form>
   );
 }
+
