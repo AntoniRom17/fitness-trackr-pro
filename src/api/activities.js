@@ -1,15 +1,10 @@
 const API = import.meta.env.VITE_API;
+const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api";
 
-/** Fetches an array of activities from the API. */
-export async function getActivities() {
-  try {
-    const response = await fetch(API + "/activities");
-    const result = await response.json();
-    return result;
-  } catch (e) {
-    console.error(e);
-    return [];
-  }
+export async function fetchActivities() {
+  const response = await fetch(`${BASE_URL}/activities`);
+  if (!response.ok) throw new Error("Failed to fetch activities");
+  return response.json();
 }
 
 /**
