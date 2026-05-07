@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./layout/Layout";
 import ActivitiesPage from "./activities/ActivitiesPage";
-import ActivityDetails from "./activities/ActivityDetails";
+import ActivityDetails from "./activities/ActivityDetails.jsx";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Error404 from "./Error404";
