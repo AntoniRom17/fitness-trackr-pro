@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getActivities } from "../api/activities";
+import { fetchActivities } from "../api/activities";
 
 import ActivityList from "./ActivityList";
 import ActivityForm from "./ActivityForm";
@@ -8,7 +8,7 @@ export default function ActivitiesPage() {
   const [activities, setActivities] = useState([]);
 
   const syncActivities = async () => {
-    const data = await getActivities();
+    const data = await fetchActivities();
     setActivities(data);
   };
 
