@@ -1,6 +1,6 @@
-const API = import.meta.env.VITE_API;
 const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api";
 
+/** Fetches an array of activities from the API. */
 export async function fetchActivities() {
   const response = await fetch(`${BASE_URL}/activities`);
   if (!response.ok) throw new Error("Failed to fetch activities");
@@ -16,7 +16,7 @@ export async function createActivity(token, activity) {
     throw Error("You must be signed in to create an activity.");
   }
 
-  const response = await fetch(API + "/activities", {
+  const response = await fetch(`${BASE_URL}/activities`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export async function deleteActivity(token, id) {
     throw Error("You must be signed in to delete an activity.");
   }
 
-  const response = await fetch(API + "/activities/" + id, {
+  const response = await fetch(`${BASE_URL}/activities/${id}`, {
     method: "DELETE",
     headers: { Authorization: "Bearer " + token },
   });
@@ -53,8 +53,7 @@ export async function deleteActivity(token, id) {
 
 /** Fetches a single activity by ID */
 export async function getActivityById(id) {
-  const response = await fetch(`${API}/activities/${id}`);
-
+  const response = await fetch(`${BASE_URL}/activities/${id}`);
   const result = await response.json();
 
   if (!response.ok) {
@@ -63,4 +62,5 @@ export async function getActivityById(id) {
 
   return result;
 }
+
 
