@@ -1,25 +1,31 @@
+/* RESET + BASE -------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-form,
-label,
-main {
-  display: grid;
-  gap: 0.5rem;
+html,
+body {
+  font-family: system-ui, sans-serif;
+  background: #fafafa;
+  color: #222;
 }
 
+/* ROOT LAYOUT ---------------------------------------------------- */
 #root {
   width: 45ch;
   margin: 0 auto;
   padding: 1rem;
+  display: grid;
+  gap: 1rem;
 }
 
+/* HEADER + NAV --------------------------------------------------- */
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0.5rem 0;
 }
 
@@ -28,6 +34,103 @@ header nav {
   gap: 1ch;
 }
 
+header nav a,
+header nav button {
+  color: teal;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+}
+
+header nav a:hover,
+header nav button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* MAIN ----------------------------------------------------------- */
+main {
+  display: grid;
+  gap: 1rem;
+}
+
+/* FORMS ---------------------------------------------------------- */
+form {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  background: white;
+}
+
+label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+input,
+select,
+button {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font: inherit;
+}
+
+button {
+  background: teal;
+  color: white;
+  border: none;
+}
+
+button:hover {
+  background: #006d6d;
+  cursor: pointer;
+}
+
+/* LISTS ---------------------------------------------------------- */
+ul,
+ol {
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+li {
+  list-style: none;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  background: white;
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* ROUTINE + SET CARDS ------------------------------------------- */
+.routine-card,
+.set-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  background: white;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.routine-card h2,
+.set-card h3 {
+  margin: 0;
+}
+
+/* ERROR ---------------------------------------------------------- */
+p[role="alert"],
+.error {
+  color: red;
+}
+
+/* LINKS ---------------------------------------------------------- */
 a {
   color: teal;
 }
@@ -35,13 +138,4 @@ a {
 a:hover {
   cursor: pointer;
   text-decoration: underline;
-}
-
-ul,
-ol {
-  padding-left: 1rem;
-}
-
-p[role="alert"] {
-  color: red;
 }
